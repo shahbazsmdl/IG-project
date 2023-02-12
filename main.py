@@ -94,3 +94,4 @@ def generate_and_upload_image():
     #   upload_to_facebook(prompt, image_url)
       print(image_url)
       upload_to_instagram(prompt, image_url)
+generate_and_upload_image()
