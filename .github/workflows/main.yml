@@ -28,5 +28,3 @@ jobs:
     - name: Run Python script
       run: |
         python main.py
-      branch: main 
-        
