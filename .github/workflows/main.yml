@@ -28,8 +28,6 @@ jobs:
         pip install requests
         pip install openai
         pip install facebook-sdk
-        pip install time
-        pip install schedule
 
     - name: Run Python script
       run: |
