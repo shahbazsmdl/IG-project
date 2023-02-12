@@ -27,7 +27,7 @@ jobs:
       run: |
         pip install requests
         pip install openai
-        pip install facebook
+        pip install facebook-sdk
         pip install random
         pip install time
         pip install schedule
