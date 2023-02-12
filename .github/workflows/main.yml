@@ -1,0 +1,30 @@
+on:
+  schedule:
+    - cron:  '*/1 * * * *'
+env:
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  FACEBOOK_ACCESS_TOKEN: ${{ secrets.FACEBOOK_ACCESS_TOKEN }}
+  INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        pip install requests
+        pip install openai
+        pip install facebook-sdk
+    - name: Run Python script
+      run: |
+        python main.py
+        
