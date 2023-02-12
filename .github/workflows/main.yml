@@ -1,10 +1,6 @@
-name: Run Python Code
-
 on:
-  push:
-    branches:
-      - main
-
+  schedule:
+    - cron:  '*/1 * * * *'
 env:
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
   FACEBOOK_ACCESS_TOKEN: ${{ secrets.FACEBOOK_ACCESS_TOKEN }}
@@ -28,7 +24,6 @@ jobs:
         pip install requests
         pip install openai
         pip install facebook-sdk
-
     - name: Run Python script
       run: |
         python main.py
