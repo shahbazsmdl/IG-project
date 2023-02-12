@@ -1,31 +1,44 @@
+name: run main.py
+
 on:
-  push:
-   schedule:
-     - cron:  '*/1 * * * *'
-    
-env:
-  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-  FACEBOOK_ACCESS_TOKEN: ${{ secrets.FACEBOOK_ACCESS_TOKEN }}
-  INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+  schedule:
+   - cron:  '*/1 * * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: 3.8
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner
 
-    - name: Install dependencies
-      run: |
-        pip install requests
-        pip install openai
-        pip install facebook-sdk
-    - name: Run Python script
-      run: |
-        python main.py
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9' # install the python version needed
+          
+      - name: install python packages
+        run: |
+         pip install requests
+         pip install openai
+         pip install facebook-sdk
+
+      - name: execute py script # run main.py
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          FACEBOOK_ACCESS_TOKEN: ${{ secrets.FACEBOOK_ACCESS_TOKEN }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+        run: python main.py
+          
+      - name: commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
+          
+      - name: push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main 
