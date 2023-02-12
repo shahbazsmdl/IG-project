@@ -22,7 +22,7 @@ image_headers = {
 }
 
 def generate_prompt():
-    topics = ["beaches", "town", "agriculture", "beautiful places"]
+    topics = ["beaches", "town", "beautiful agriculture area", "beautiful places"]
     selected_topic = random.choice(topics)
 
     # Generate the text prompt
