@@ -1,6 +1,7 @@
 on:
   schedule:
     - cron:  '*/1 * * * *'
+    
 env:
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
   FACEBOOK_ACCESS_TOKEN: ${{ secrets.FACEBOOK_ACCESS_TOKEN }}
