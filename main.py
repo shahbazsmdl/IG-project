@@ -29,7 +29,7 @@ def generate_prompt():
     response = openai.Completion.create(
         engine="text-davinci-003",
         prompt=f"topic: {selected_topic} select any {selected_topic} and tell me about the {selected_topic} where it is and why? [Instragram discription][15 hash tage][emoji]",
-        max_tokens=250,
+        max_tokens=220,
         temperature=0.5
     )
     prompt_text = response["choices"][0]["text"].strip()
@@ -39,7 +39,7 @@ def generate_image(prompt):
     # Define the API request data for image generation
     image_data = {
         "model": "image-alpha-001",
-        "prompt": f"Generate a high-resolution and visually stunning picture for an Instagram post based on the following description: {prompt}",
+        "prompt": f"Generate a high-resolution and visually stunning picture for an Instagram post. The picture should be based on the following description: {prompt}. Your goal is to create an image that is visually striking and eye-catching, ultra-detailed, ultrarealistic, photorealism, 8k, octane render, without any text or captions directly on the image itself.",
         "size": "1024x1024"
     }
 
