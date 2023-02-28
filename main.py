@@ -39,7 +39,7 @@ def generate_image(prompt):
     # Define the API request data for image generation
     image_data = {
         "model": "image-alpha-001",
-        "prompt": f"Generate a high-resolution and visually stunning picture for an Instagram post. The picture should be based on the following description: {prompt}. Your goal is to create an image that is visually striking and eye-catching, ultra-detailed, ultrarealistic, photorealism, 8k, octane render, without any text or captions directly on the image itself.",
+        "prompt": f"Generate a high-resolution, visually stunning ,relistic,No human,No text. Description: {prompt}. Your goal is to create an image that is visually striking and eye-catching, ultra-detailed, ultrarealistic, photorealism, 8k, octane render",
         "size": "1024x1024"
     }
 
