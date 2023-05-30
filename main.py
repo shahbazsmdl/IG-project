@@ -29,7 +29,7 @@ def generate_prompt():
     response = openai.Completion.create(
         engine="text-davinci-003",
         prompt=f"topic: {selected_topic} select any {selected_topic} and tell me about the {selected_topic} where it is and why? [Instragram discription][30 hash tage][emoji]",
-        max_tokens=220,
+        max_tokens=270,
         temperature=0.5
     )
     prompt_text = response["choices"][0]["text"].strip()
