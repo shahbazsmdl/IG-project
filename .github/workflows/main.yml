@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '1 */2 * * *'
+    - cron: '1 0 * * 0'
 
 env:
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
